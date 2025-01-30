@@ -1,7 +1,7 @@
 import React from 'react'
 import Nav from './componets/Header/Nav';
 import Front from './Body/Front';
-import Demodata from './Body/demodata';
+import Demodata from './Body/Demodata';
 import Newcollection from './Body/Newcollection';
 const All = () => {
   return (
