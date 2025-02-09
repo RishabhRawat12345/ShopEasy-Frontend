@@ -1,32 +1,34 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const navigate=useNavigate();
+  const navigate = useNavigate();
+
   const fetchData = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setError("");
+    setError(""); // Reset any previous errors
 
     try {
-      const response = await axios.get("https://full-stackproject-wk3s.onrender.com/api/getdetails/signupdata", {
+      const response = await axios.get("https://full-stackproject-7kyr.onrender.com/api/getdetails/signupdata", {
         params: { email, password },
-  
       });
-       console.log(response)
-       console.log(response.statusText)
-       if (response.statusText === "OK") {
+
+      console.log(response); // Logs the response to see the structure
+      if (response.status === 200) { // Check for successful response status
         alert(response.data.message); // Show success message
         navigate("/All"); // Redirect to main page
       } else {
-        setError("Invalid email or password");
+        setError("Invalid email or password"); // Handle incorrect credentials
       }
     } catch (error) {
       console.error("Error fetching data:", error.response ? error.response.data : error.message);
+      // Show user-friendly error message
       setError(error.response?.data?.message || "An error occurred. Please try again.");
     } finally {
       setLoading(false);
