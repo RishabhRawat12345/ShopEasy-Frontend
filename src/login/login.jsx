@@ -15,7 +15,7 @@ const Login = () => {
     setError(""); // Reset any previous errors
 
     try {
-      const response = await axios.get("https://full-stackproject-7kyr.onrender.com/api/getdetails/signupdata", {
+      const response = await axios.get("https://shopeasy-backend-rig0.onrender.com/api/getdetails/signupdata", {
         params: { email, password },
       });
 
